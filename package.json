@@ -1,6 +1,6 @@
 {
   "name": "hcms-front",
-  "version": "10.1.1",
+  "version": "10.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
