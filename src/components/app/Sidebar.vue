@@ -62,8 +62,8 @@ onMounted(() => {
     <div id="sidebar" class="app-sidebar">
         <perfect-scrollbar class="app-sidebar-content">
             <div class="menu">
-                <template v-for="menu in appSidebarMenu">
-                    <div class="menu-header" v-if="menu.is_header">{{ menu.text }}</div>
+                <template v-for="(menu, idx) in appSidebarMenu" :key="idx">
+                    <div class="menu-header" v-if="menu.is_header">{{ $t(menu.text) }}</div>
                     <div class="menu-divider" v-else-if="menu.is_divider"></div>
                     <template v-else>
                         <sidebar-nav v-if="menu.text" v-bind:menu="menu"></sidebar-nav>
