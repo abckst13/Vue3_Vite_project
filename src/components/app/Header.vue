@@ -2,6 +2,36 @@
 import { slideToggle } from '@/composables/slideToggle.js';
 import { useAppOptionStore } from '@/stores/app-option';
 import { RouterLink } from 'vue-router';
+import { toRef, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
+
+const i18n = useI18n();
+const currentLocale = toRef(i18n.locale);
+const message = toRef('');
+
+const initializeLanguage = () => {
+    const route = useRoute(); // 라우트 정보 가져오기
+    // const lang = determineLanguage(route); // 라우트 기반 언어 설정
+    // currentLocale.value = 'en';
+    i18n.locale.value = 'en';
+    message.value = i18n.t('message');
+};
+
+const changeLanguage = locale => {
+    currentLocale.value = locale;
+    i18n.locale = locale;
+};
+
+// const setMessage = () => {
+//     // Set message based on the current locale
+//     message.value = i18n.t('message');
+// };
+// // 컴포넌트가 생성될 때 언어 초기화 함수 호출
+// onMounted(() => {
+//     initializeLanguage();
+//     setMessage();
+// });
 
 const appOption = useAppOptionStore();
 const notificationData = [
@@ -92,9 +122,12 @@ function checkForm(event) {
             </RouterLink>
         </div>
         <!-- END brand -->
-
         <!-- BEGIN menu -->
         <div class="menu">
+            <div>
+                <button @click="changeLanguage('en')">English</button>
+                <button @click="changeLanguage('ko')">한국어</button>
+            </div>
             <div class="menu-item">
                 <a
                     href="#"
