@@ -11,6 +11,7 @@ export const useAppOptionStore = defineStore({
             appHeaderHide: false,
             appHeaderSearchToggled: false,
             appSidebarCollapsed: false,
+            appSidebarToggled: true,
             appSidebarMobileToggled: false,
             appSidebarMobileClosed: false,
             appSidebarHide: false,

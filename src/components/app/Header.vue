@@ -50,12 +50,12 @@ function toggleAppSidebarMobileToggled() {
         window.scrollTo(0, 0);
     }
 }
-function toggleAppHeaderSearch(event) {
+function toggleAppHeaderSearch(event: { preventDefault: () => void }) {
     event.preventDefault();
 
     appOption.appHeaderSearchToggled = !appOption.appHeaderSearchToggled;
 }
-function checkForm(event) {
+function checkForm(this: any, event) {
     event.preventDefault();
     this.$router.push({ path: '/extra/search' });
 }
